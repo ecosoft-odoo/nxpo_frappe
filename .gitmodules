@@ -2,3 +2,4 @@
 	path = frappe_docker
 	url = https://github.com/frappe/frappe_docker.git
 	branch = main
+	ignore = dirty
