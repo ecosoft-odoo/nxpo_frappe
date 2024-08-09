@@ -1,5 +1,21 @@
 #!/bin/bash
 
+# Set environment variable
+export CUSTOM_IMAGE="ecosoft/nxpo_frappe"
+export CUSTOM_TAG="1.0"
+export ERPNEXT_VERSION="latest"
+export DB_PASSWORD="nxpopwd"
+export PULL_POLICY="never"
+export ADMIN_PASSWORD="admin"
+export SITE="localhost"
+
+latest_image=$(docker images --filter=reference="$CUSTOM_IMAGE:*" --format "{{.Repository}}:{{.Tag}}" | sort -r | head -n 1)
+if [ -n "$latest_image" ]; then
+    major_version=$(echo ${latest_image#*:} | cut -d '.' -f 1)
+    minor_version=$(echo ${latest_image#*:} | cut -d '.' -f 2)
+    export CUSTOM_TAG="$((major_version + 1)).$minor_version"
+fi
+
 # Go to nxpo_frappe
 frappe_path=$(dirname "$(realpath "$0")")
 cd $frappe_path
@@ -11,18 +27,21 @@ git submodule update --remote
 # Build Image
 export APPS_JSON_BASE64=$(base64 -w 0 apps.json)
 cd frappe_docker
-docker build --no-cache --build-arg=APPS_JSON_BASE64=$APPS_JSON_BASE64 --tag=ecosoft/nxpo_frappe:latest --file images/custom/Containerfile .
-
-# Create docker-compose.yaml
-export CUSTOM_IMAGE='ecosoft/nxpo_frappe'
-export CUSTOM_TAG='latest'
-export ERPNEXT_VERSION='latest'
-export DB_PASSWORD='nXp@MYSql'
-export PULL_POLICY='never'
-docker compose -f compose.yaml -f overrides/compose.mariadb.yaml -f overrides/compose.redis.yaml -f overrides/compose.proxy.yaml config > ../docker-compose.yaml
+docker build --build-arg=APPS_JSON_BASE64=$APPS_JSON_BASE64 --tag=$CUSTOM_IMAGE:$CUSTOM_TAG --file images/custom/Containerfile .
 
 # Start frappe
-docker compose -f ../docker-compose.yaml up -d
+image_from_build=$(docker images --filter=reference="$CUSTOM_IMAGE:$CUSTOM_TAG" --format "{{.Repository}}:{{.Tag}}")
+if [ -n "$image_from_build" ]; then
+    docker compose -f compose.yaml -f overrides/compose.mariadb.yaml -f overrides/compose.redis.yaml -f overrides/compose.proxy.yaml config > ../docker-compose.yaml
+    docker compose -f ../docker-compose.yaml up -d
+    docker exec frappe_docker-backend-1 bench new-site $SITE --mariadb-root-password $DB_PASSWORD --admin-password $ADMIN_PASSWORD
+fi
 
-# Bench new site
-docker exec frappe_docker-backend-1 bench new-site localhost --mariadb-root-password nXp@MYSql --admin-password admin
+# Remove all images not used in container
+docker images --filter=reference="$CUSTOM_IMAGE:*" --format "{{.Repository}}:{{.Tag}}" | while read image; do
+    if ! docker ps -a --format '{{.Image}}' | grep -q "$image"; then
+        docker rmi "$image"
+    fi
+done
+
+exit 0
