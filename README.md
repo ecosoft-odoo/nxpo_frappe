@@ -46,3 +46,7 @@
    ```
    sh install.sh
    ```
+3. ตรวจสอบ Apps ทั้งหมด
+   ```
+   docker compose --project-name nxpo-frappe -f docker-compose.yaml exec backend ls apps
+   ```

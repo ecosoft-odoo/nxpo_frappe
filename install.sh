@@ -37,7 +37,7 @@ image_from_build=$(docker images --filter=reference="$CUSTOM_IMAGE:$CUSTOM_TAG" 
 if [ -n "$image_from_build" ]; then
     docker compose --project-name nxpo-frappe -f compose.yaml -f overrides/compose.mariadb.yaml -f overrides/compose.redis.yaml -f overrides/compose.proxy.yaml config > ../docker-compose.yaml
     docker compose --project-name nxpo-frappe -f ../docker-compose.yaml up -d
-    docker compose --project-name nxpo-frappe -f ../docker-compose.yaml exec backend bench new-site $SITE --mariadb-root-password $DB_PASSWORD --admin-password $ADMIN_PASSWORD
+    docker compose --project-name nxpo-frappe -f ../docker-compose.yaml exec backend bench new-site $SITE --no-mariadb-socket --mariadb-root-password $DB_PASSWORD --admin-password $ADMIN_PASSWORD
 fi
 
 # Remove all images not used in container
