@@ -7,3 +7,5 @@
    > git config submodule.frappe_docker.ignore all
 4. ดาวน์โหลด code จาก frappe_docker repository
    > git submodule init && git submodule update --remote
+5. รัน script install.sh เพื่อติดตั้งระบบ
+   > sh install.sh
