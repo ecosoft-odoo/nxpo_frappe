@@ -6,7 +6,7 @@
    ```
 2. เข้าไปใน folder nxpo_frappe
    ```
-   cd &lt;workspace directory&gt;/nxpo_frappe
+   cd <workspace directory>/nxpo_frappe
    ```
 3. Ignore frappe_docker submodule จาก git
    ```
