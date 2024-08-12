@@ -1,6 +1,6 @@
 # วิธีการติดตั้ง
 
-1. ดาวน์โหลด source code ใส่ไว้ใน folder ที่ต้องการเช่น folder workspaces
+1. ดาวน์โหลด source code ใส่ไว้ใน folder ที่ต้องการ เช่น folder workspaces
    ```
    git clone https://github.com/ecosoft-odoo/nxpo_frappe.git -b main
    ```
@@ -17,7 +17,7 @@
    git submodule init && git submodule update --remote
    ```
 5. แก้ไข export SITE="..." ในไฟล์ install.sh ตาม url ที่เข้าระบบ เช่น ถ้าเข้าระบบด้วย url erp.ecosoft.co.th จะตั้งค่าเป็น export SITE="erp.ecosoft.co.th"
-6. รัน script install.sh เพื่อติดตั้งระบบ frappe
+6. รัน script install.sh เพื่อติดตั้งระบบ
    ```
    sh install.sh
    ```
