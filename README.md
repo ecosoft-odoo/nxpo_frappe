@@ -16,8 +16,8 @@
    ```
    git submodule init && git submodule update --remote
    ```
-5. แก้ไข site ในไฟล์ install.sh ตาม url ที่เข้าระบบตรงบรรทัด export SITE="...." เช่น ถ้าเข้าระบบด้วย url erp.ecosoft.co.th จะตั้งค่าบรรทัดนี้เป็น export SITE="erp.ecosoft.co.th"
-6. รัน script install.sh เพื่อติดตั้งระบบ
+5. แก้ไข export SITE="..." ในไฟล์ install.sh ตาม url ที่เข้าระบบ เช่น ถ้าเข้าระบบด้วย url erp.ecosoft.co.th จะตั้งค่าเป็น export SITE="erp.ecosoft.co.th"
+6. รัน script install.sh เพื่อติดตั้งระบบ frappe
    ```
    sh install.sh
    ```
