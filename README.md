@@ -8,7 +8,7 @@
    ```
    cd <workspace directory>/nxpo_frappe
    ```
-3. Ignore frappe_docker submodule จาก git
+3. Ignore frappe_docker submodule
    ```
    git config submodule.frappe_docker.ignore all
    ```
