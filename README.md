@@ -55,7 +55,7 @@
 
 1. รัน script bench.sh แล้วตามด้วยคำสั่ง --site [site-name] install-app [app-name]
    ```
-   sh bench.sh --site erp.ecosoft.co.th install-app hrms payments
+   sh bench.sh --site erp.ecosoft.co.th install-app hrms wiki
    ```
 
 # วิธีการ Update Apps

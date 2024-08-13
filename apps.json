@@ -1,6 +1,38 @@
 [
-    {
-        "url": "https://github.com/frappe/erpnext",
-        "branch": "version-15"
-    }
+   {
+      "url": "https://github.com/frappe/erpnext",
+      "branch": "version-15"
+   },
+   {
+      "url": "https://github.com/frappe/hrms",
+      "branch": "version-15"
+   },
+   {
+      "url": "https://github.com/frappe/print_designer",
+      "branch": "main"
+   },
+   {
+      "url": "https://github.com/frappe/wiki",
+      "branch": "master"
+   },
+   {
+      "url": "https://github.com/kittiu/thai_base",
+      "branch": "main"
+   },
+   {
+      "url": "https://github.com/kittiu/thai_tax",
+      "branch": "main"
+   },
+   {
+      "url": "https://github.com/kittiu/thai_payroll",
+      "branch": "main"
+   },
+   {
+      "url": "https://github.com/kittiu/thai_workflow",
+      "branch": "main"
+   },
+   {
+      "url": "https://github.com/kittiu/nxpo_hrms",
+      "branch": "main"
+   }
 ]

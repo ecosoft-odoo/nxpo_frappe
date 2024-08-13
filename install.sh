@@ -8,7 +8,7 @@ export PULL_POLICY="never"
 # --
 export ADMIN_PASSWORD="admin"
 export DB_PASSWORD="nxpopwd"
-export SITE="localhost"
+export SITE="10.1.20.68"
 
 # Next image tag = 1.<minor version>
 # When run this script, minor version will plus 1 from original image
