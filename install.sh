@@ -36,8 +36,10 @@ docker build --no-cache --build-arg=APPS_JSON_BASE64=$APPS_JSON_BASE64 --tag=$CU
 image_from_build=$(docker images --filter=reference="$CUSTOM_IMAGE:$CUSTOM_TAG" --format "{{.Repository}}:{{.Tag}}")
 if [ -n "$image_from_build" ]; then
     docker compose --project-name nxpo-frappe -f compose.yaml -f overrides/compose.mariadb.yaml -f overrides/compose.redis.yaml -f overrides/compose.proxy.yaml config > ../docker-compose.yaml
+    docker compose --project-name nxpo-frappe -f ../docker-compose.yaml down
     docker compose --project-name nxpo-frappe -f ../docker-compose.yaml up -d
     docker compose --project-name nxpo-frappe -f ../docker-compose.yaml exec backend bench new-site $SITE --no-mariadb-socket --mariadb-root-password $DB_PASSWORD --admin-password $ADMIN_PASSWORD
+    docker compose --project-name nxpo-frappe -f ../docker-compose.yaml exec backend bench --site $SITE install-app erpnext
 fi
 
 # Remove all images not used in container

@@ -50,3 +50,17 @@
    ```
    docker compose --project-name nxpo-frappe -f docker-compose.yaml exec backend ls apps
    ```
+
+# วิธีการ Install Apps
+
+1. รัน script bench.sh แล้วตามด้วยคำสั่ง --site [site-name] install-app [app-name]
+   ```
+   sh bench.sh --site erp.ecosoft.co.th install-app hrms payments
+   ```
+
+# วิธีการ Update Apps
+
+1. รัน script bench.sh แล้วตามด้วยคำสั่ง --site [site-name] migrate
+   ```
+   sh bench.sh --site erp.ecosoft.co.th migrate
+   ```
