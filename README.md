@@ -51,6 +51,10 @@
    docker compose --project-name nxpo-frappe -f docker-compose.yaml exec backend ls apps
    ```
 
+**NOTE**
+
+ในขั้นตอนนี้จะใช้เวลาในการ Download Apps นาน เพราะว่าก่อนการดาวน์โหลด Apps ระบบจะอัพเดท Version ของ ERPNEXT ให้ล่าสุดก่อน
+
 # วิธีการ Install Apps
 
 1. รัน script bench.sh แล้วตามด้วยคำสั่ง --site [site-name] install-app [app-name]
