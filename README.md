@@ -16,12 +16,13 @@
    ```
    git submodule init && git submodule update --remote
    ```
-5. แก้ไข export SITE="..." ในไฟล์ install.sh ตาม url ที่เข้าระบบ เช่น ถ้าเข้าระบบด้วย url erp.ecosoft.co.th จะตั้งค่าเป็น export SITE="erp.ecosoft.co.th"
+5. แก้ไข export SITES=("...") ในไฟล์ install.sh ตาม url ที่เข้าระบบ เช่น ถ้าเข้าระบบด้วย url erp.ecosoft.co.th จะตั้งค่าเป็น export SITES=("erp.ecosoft.co.th")
 6. รัน script install.sh เพื่อติดตั้งระบบ
    ```
-   sh install.sh
+   bash install.sh
    ```
-7. เข้าระบบผ่าน url เช่น http://erp.ecosoft.co.th
+7. ตั้งค่า https โดยใส่ไฟล์ cert ที่ path /var/lib/docker/volumes/nxpo-frappe_cert-data/_data ซึ่งประกอบด้วย 2 ไฟล์ คือ server.crt และ server.key
+8. เข้าระบบผ่าน url เช่น https://erp.ecosoft.co.th
 
 # วิธีการ Download Apps
 
@@ -44,7 +45,7 @@
    ```
 2. รัน script install.sh
    ```
-   sh install.sh
+   bash install.sh
    ```
 3. ตรวจสอบ Apps ทั้งหมด
    ```
@@ -59,12 +60,12 @@
 
 1. รัน script bench.sh แล้วตามด้วยคำสั่ง --site [site-name] install-app [app-name]
    ```
-   sh bench.sh --site erp.ecosoft.co.th install-app hrms wiki
+   bash bench.sh --site erp.ecosoft.co.th install-app hrms wiki
    ```
 
 # วิธีการ Update Apps
 
 1. รัน script bench.sh แล้วตามด้วยคำสั่ง --site [site-name] migrate
    ```
-   sh bench.sh --site erp.ecosoft.co.th migrate
+   bash bench.sh --site erp.ecosoft.co.th migrate
    ```
