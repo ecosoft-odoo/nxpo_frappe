@@ -41,8 +41,8 @@ if [ -n "$image_from_build" ]; then
     docker compose --project-name nxpo-frappe -f ../docker-compose.yaml up -d
     echo "$SITES" | tr ',' '\n' | while read -r site;
     do
-        docker compose --project-name nxpo-frappe -f ../docker-compose.yaml exec backend bench new-site $site --no-mariadb-socket --mariadb-root-password $DB_PASSWORD --admin-password $ADMIN_PASSWORD
-        docker compose --project-name nxpo-frappe -f ../docker-compose.yaml exec backend bench --site $site install-app erpnext
+        docker compose --project-name nxpo-frappe -f ../docker-compose.yaml exec -T backend bench new-site $site --no-mariadb-socket --mariadb-root-password $DB_PASSWORD --admin-password $ADMIN_PASSWORD
+        docker compose --project-name nxpo-frappe -f ../docker-compose.yaml exec -T backend bench --site $site install-app erpnext
     done
 fi
 
