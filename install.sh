@@ -8,6 +8,7 @@ export PULL_POLICY="never"
 # --
 export ADMIN_PASSWORD="admin"
 export DB_PASSWORD="nxpopwd"
+export LETSENCRYPT_EMAIL="yongyut@nxpo.or.th"
 export SITES="people.nxpo.or.th","people-test.nxpo.or.th"
 
 # Next image tag = 1.<minor version>
