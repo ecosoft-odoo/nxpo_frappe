@@ -38,8 +38,7 @@ if [ -n "$image_from_build" ]; then
     docker compose --project-name nxpo-frappe -f compose.yaml -f overrides/compose.mariadb.yaml -f overrides/compose.redis.yaml -f overrides/compose.https.yaml config > ../docker-compose.yaml
     docker compose --project-name nxpo-frappe -f ../docker-compose.yaml down
     docker compose --project-name nxpo-frappe -f ../docker-compose.yaml up -d
-    IFS="," read -r -a site_list <<< "$SITES"
-    for site in "${site_list[@]}"
+    echo "$SITES" | tr ',' '\n' | while read -r site;
     do
         docker compose --project-name nxpo-frappe -f ../docker-compose.yaml exec backend bench new-site $site --no-mariadb-socket --mariadb-root-password $DB_PASSWORD --admin-password $ADMIN_PASSWORD
         docker compose --project-name nxpo-frappe -f ../docker-compose.yaml exec backend bench --site $site install-app erpnext
