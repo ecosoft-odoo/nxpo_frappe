@@ -8,7 +8,7 @@ export PULL_POLICY="never"
 # --
 export ADMIN_PASSWORD="admin"
 export DB_PASSWORD="nxpopwd"
-export SITES=("people.nxpo.or.th" "people-test.nxpo.or.th")
+export SITES=("frappe-hr.nxpo.or.th" "frappe-hr-test.nxpo.or.th")
 
 # Next image tag = 1.<minor version>
 # When run this script, minor version will plus 1 from original image
