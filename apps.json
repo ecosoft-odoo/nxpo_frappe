@@ -8,6 +8,10 @@
       "branch": "version-15"
    },
    {
+      "url": "https://github.com/frappe/lending",
+      "branch": "version-15"
+   },
+   {
       "url": "https://github.com/frappe/print_designer",
       "branch": "main"
    },
