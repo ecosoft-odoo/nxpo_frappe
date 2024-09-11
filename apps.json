@@ -38,5 +38,13 @@
    {
       "url": "https://github.com/kittiu/nxpo_hrms",
       "branch": "main"
+   },
+   {
+      "url": "https://github.com/kittiu/thai_zkt",
+      "branch": "main"
+   },
+   {
+      "url": "https://github.com/kittiu/doctype_permission",
+      "branch": "main"
    }
 ]
